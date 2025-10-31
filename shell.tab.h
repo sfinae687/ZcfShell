@@ -78,7 +78,7 @@ extern int shell_debug;
 #if ! defined SHELL_STYPE && ! defined SHELL_STYPE_IS_DECLARED
 union SHELL_STYPE
 {
-#line 10 "shell.y"
+#line 12 "shell.y"
 
     const char *arg;
     struct AtomTask *t;

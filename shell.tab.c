@@ -82,8 +82,10 @@
 #include <stdio.h>
 
 // int yydebug = 1;
+int yylex(void);
+int yyerror(char*);
 
-#line 87 "shell.tab.c"
+#line 89 "shell.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -513,8 +515,8 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    26,    26,    27,    28,    32,    33,    34,    35,    39,
-      40,    44,    45,    46,    47,    48
+       0,    28,    28,    29,    30,    34,    35,    36,    37,    41,
+      42,    46,    47,    48,    49,    50
 };
 #endif
 
@@ -1084,91 +1086,91 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* input: EOL  */
-#line 26 "shell.y"
+#line 28 "shell.y"
           {building_result = NULL; YYACCEPT;}
-#line 1090 "shell.tab.c"
+#line 1092 "shell.tab.c"
     break;
 
   case 3: /* input: list EOL  */
-#line 27 "shell.y"
+#line 29 "shell.y"
                {detach_building_task = 0; building_result = (yyvsp[-1].l); YYACCEPT;}
-#line 1096 "shell.tab.c"
+#line 1098 "shell.tab.c"
     break;
 
   case 4: /* input: list AND_SYM EOL  */
-#line 28 "shell.y"
+#line 30 "shell.y"
                        {detach_building_task = 1; building_result = (yyvsp[-2].l); YYACCEPT;}
-#line 1102 "shell.tab.c"
+#line 1104 "shell.tab.c"
     break;
 
   case 5: /* list: task  */
-#line 32 "shell.y"
+#line 34 "shell.y"
            {(yyval.l) = append_list_atom_task(create_task_list(), (yyvsp[0].t)); }
-#line 1108 "shell.tab.c"
+#line 1110 "shell.tab.c"
     break;
 
   case 6: /* list: pipeline  */
-#line 33 "shell.y"
+#line 35 "shell.y"
                {(yyval.l) = append_list_pipeline(create_task_list(), (yyvsp[0].p)); }
-#line 1114 "shell.tab.c"
+#line 1116 "shell.tab.c"
     break;
 
   case 7: /* list: list SEMICOLON task  */
-#line 34 "shell.y"
+#line 36 "shell.y"
                           {(yyval.l) = append_list_atom_task((yyvsp[-2].l), (yyvsp[0].t)); }
-#line 1120 "shell.tab.c"
+#line 1122 "shell.tab.c"
     break;
 
   case 8: /* list: list SEMICOLON pipeline  */
-#line 35 "shell.y"
+#line 37 "shell.y"
                               {(yyval.l) = append_list_pipeline((yyvsp[-2].l), (yyvsp[0].p)); }
-#line 1126 "shell.tab.c"
+#line 1128 "shell.tab.c"
     break;
 
   case 9: /* pipeline: task TPIPE task  */
-#line 39 "shell.y"
+#line 41 "shell.y"
                       {(yyval.p) = combine_pipeline((yyvsp[-2].t), (yyvsp[0].t));}
-#line 1132 "shell.tab.c"
+#line 1134 "shell.tab.c"
     break;
 
   case 10: /* pipeline: pipeline TPIPE task  */
-#line 40 "shell.y"
+#line 42 "shell.y"
                           {(yyval.p) = append_pipeline((yyvsp[-2].p), (yyvsp[0].t));}
-#line 1138 "shell.tab.c"
+#line 1140 "shell.tab.c"
     break;
 
   case 11: /* task: ARG  */
-#line 44 "shell.y"
+#line 46 "shell.y"
           {(yyval.t) = create_atom_task((yyvsp[0].arg));}
-#line 1144 "shell.tab.c"
+#line 1146 "shell.tab.c"
     break;
 
   case 12: /* task: task ARG  */
-#line 45 "shell.y"
+#line 47 "shell.y"
                {(yyval.t) = (yyvsp[-1].t); push_arg_to((yyvsp[-1].t), (yyvsp[0].arg));}
-#line 1150 "shell.tab.c"
+#line 1152 "shell.tab.c"
     break;
 
   case 13: /* task: task RD_IN ARG  */
-#line 46 "shell.y"
+#line 48 "shell.y"
                      {(yyval.t) = (yyvsp[-2].t); rd_task_in((yyval.t), (yyvsp[0].arg));}
-#line 1156 "shell.tab.c"
+#line 1158 "shell.tab.c"
     break;
 
   case 14: /* task: task RD_OUT ARG  */
-#line 47 "shell.y"
+#line 49 "shell.y"
                       {(yyval.t) = (yyvsp[-2].t); rd_task_out((yyval.t), (yyvsp[0].arg));}
-#line 1162 "shell.tab.c"
+#line 1164 "shell.tab.c"
     break;
 
   case 15: /* task: task RD_TR ARG  */
-#line 48 "shell.y"
+#line 50 "shell.y"
                      {(yyval.t) = (yyvsp[-2].t); rd_task_tr((yyval.t), (yyvsp[0].arg));}
-#line 1168 "shell.tab.c"
+#line 1170 "shell.tab.c"
     break;
 
 
-#line 1172 "shell.tab.c"
+#line 1174 "shell.tab.c"
 
       default: break;
     }
@@ -1361,7 +1363,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 50 "shell.y"
+#line 52 "shell.y"
 
 
 int yyerror(char *errmsg) {

@@ -5,6 +5,8 @@
 #include <stdio.h>
 
 // int yydebug = 1;
+int yylex(void);
+int yyerror(char*);
 %}
 
 %union {

@@ -34,11 +34,11 @@ $(Task_OBJ) : %.o : %.cpp builtin.o
 $(parser_OBJ) : %.o : %.c
 	$(CC) $(CFLAGS) -c -o $@ $^
 
-# shell.tab.c : shell.y
-# 	bison -H shell.y
+shell.tab.c : shell.y
+	bison -H shell.y
 
-# lex.shell.c : shell.l
-# 	flex shell.l
+lex.shell.c : shell.l
+	flex shell.l
 
 $(builtin_cmd_OBJ) : %.o : %.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $^
@@ -46,5 +46,5 @@ $(builtin_cmd_OBJ) : %.o : %.cpp
 clean: 
 	rm $(parser_OBJ) $(builtin_cmd_OBJ) $(Task_OBJ) ./shell
 
-# clean-all: clean
-# 	rm shell.tab.h lex.shell.c shell.tab.c
+clean-all: clean
+	rm shell.tab.h lex.shell.c shell.tab.c

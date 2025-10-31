@@ -1,6 +1,6 @@
-#line 2 "lex.shell.c"
+#line 1 "lex.shell.c"
 
-#line 4 "lex.shell.c"
+#line 3 "lex.shell.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -713,9 +713,9 @@ char *yytext;
 #include "shell.tab.h"   
 #include <stdlib.h>
 #include <string.h>
-#line 717 "lex.shell.c"
+#line 716 "lex.shell.c"
 
-#line 719 "lex.shell.c"
+#line 718 "lex.shell.c"
 
 #define INITIAL 0
 #define IN_STRING 1
@@ -936,7 +936,7 @@ YY_DECL
 #line 11 "shell.l"
 
 
-#line 940 "lex.shell.c"
+#line 939 "lex.shell.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1062,7 +1062,7 @@ YY_RULE_SETUP
 #line 31 "shell.l"
 ECHO;
 	YY_BREAK
-#line 1066 "lex.shell.c"
+#line 1065 "lex.shell.c"
 
 	case YY_END_OF_BUFFER:
 		{
