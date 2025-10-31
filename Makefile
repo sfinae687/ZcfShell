@@ -16,8 +16,8 @@ builtin_cmd_OBJ := builtin/cat.o \
 parser_OBJ := shell.tab.o \
 	lex.shell.o
 
-CFLAGS := "-g" "-static-libgcc"
-CXXFLAGS := "-std=c++11" "-g" "-static-libstdc++"
+CFLAGS := -g -static-libgcc
+CXXFLAGS := -std=c++11 -g -static-libstdc++
 
 all: shell
 
@@ -28,7 +28,7 @@ shell: shell.cpp $(builtin_cmd_OBJ) builtin.o $(Task_OBJ) $(parser_OBJ)
 builtin.o : builtin.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $^
 
-$(Task_OBJ) : %.o : %.cpp builtin.o
+$(Task_OBJ) : %.o : %.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $^
 
 $(parser_OBJ) : %.o : %.c
@@ -44,7 +44,9 @@ $(builtin_cmd_OBJ) : %.o : %.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $^
 
 clean: 
-	rm $(parser_OBJ) $(builtin_cmd_OBJ) $(Task_OBJ) ./shell
+	-rm -f $(parser_OBJ) $(builtin_cmd_OBJ) $(Task_OBJ) ./shell
 
 clean-all: clean
-	rm shell.tab.h lex.shell.c shell.tab.c
+	-rm -f shell.tab.h lex.shell.c shell.tab.c
+
+.PHONY: all clean clean-all
