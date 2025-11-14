@@ -1,0 +1,6 @@
+#ifndef TRISHELL_CONFIG
+#define TRISHELL_CONFIG
+
+#define DISABLE_NONBUILTIN
+
+#endif

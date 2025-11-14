@@ -1,6 +1,7 @@
 #ifndef TRIW_SHELL_BUILDER_TASK
 #define TRIW_SHELL_BUILDER_TASK
 
+#include "config.h"
 
 #ifdef __cplusplus
     #include "task.h"

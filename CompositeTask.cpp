@@ -18,6 +18,10 @@ namespace TriwShell {
         delete dest;
     }
     void PipelineTask::execute(const std::vector<RedirectFD> &additonal_fd) {
+        if (! (src && dest)) {
+            return ;
+        }
+
         check_execute();
         assert(rd_file.empty());
 
@@ -70,7 +74,7 @@ namespace TriwShell {
 
         is_executing = true;
 
-        for (auto t : _list) {
+        for (auto t : _list) if (t) {
             t->execute();
         }
     }
@@ -78,7 +82,7 @@ namespace TriwShell {
     {
         assert(is_executing);
         int ans = 0;
-        for (auto t : _list) {
+        for (auto t : _list) if (t) {
             int s = t->wait();
             ans = (ans || s);
         }
@@ -88,7 +92,7 @@ namespace TriwShell {
     void TaskList::detach()
     {
         assert(is_execute());
-        for (auto t : _list) {
+        for (auto t : _list) if(t) {
             t->detach();
         }
     }

@@ -39,7 +39,7 @@ int main() {
 
 #else 
     while (true) {
-        std::cout << "$";
+        std::cout << "$ ";
         if (shell_parse()) {
             clear_stdin();
             continue;
@@ -87,6 +87,9 @@ AtomTask* build_task(const ArgumentVector &v) {
         const char *c_arg = strdup(v[0].c_str());
         AtomTask *t;
         t = create_atom_task(c_arg);
+        if (t == nullptr) {
+            return nullptr;
+        }
 
         auto vlen = v.size();
         for (int i=1; i<vlen; ++i) {

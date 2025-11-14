@@ -3,6 +3,7 @@
 #include "ExecutableTask.h"
 #include "BuiltinTask.h"
 #include "CompositeTask.h"
+#include "util.h"
 
 #include <stdlib.h>
 
@@ -16,6 +17,10 @@ extern "C" AtomTask* create_atom_task(const char *cmd) {
     auto bt = get_builtin_cmd_index(cmd);
     AtomTask *rt;
     if (bt == _not_builtin) {
+    #ifdef DISABLE_NONBUILTIN
+        shell_panic("The command isn't a builtin command.");
+        return nullptr;
+    #endif
         rt = new ExecutableTask;
     } else {
         rt = new BuiltinTask(bt);
@@ -48,9 +53,11 @@ extern "C" void rd_task_tr(AtomTask *t, const char *f) {
 }
 
 extern "C" PipelineTask* combine_pipeline(struct AtomTask *l, struct AtomTask *r) {
+    if (! l || ! r) return nullptr;
     return new PipelineTask(l, r);
 }
 extern "C" PipelineTask* append_pipeline(struct PipelineTask *p, struct AtomTask *t) {
+    if (! p || ! t) return nullptr;
     return new PipelineTask(p, t);
 }
 
