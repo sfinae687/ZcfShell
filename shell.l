@@ -5,6 +5,7 @@
 #include "shell.tab.h"   
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 %}
 %x IN_STRING
 WORD ([^ \n\t\v<>;|&]+)

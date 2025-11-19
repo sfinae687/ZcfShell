@@ -6,14 +6,14 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-    #include "builtin/cat.h"
-    #include "builtin/cd.h"
-    #include "builtin/ls.h"
-    #include "builtin/mkdir.h"
-    #include "builtin/pwd.h"
-    #include "builtin/rm.h"
-    #include "builtin/wc.h"
-    #include "builtin/echo.h"
+    #include "cat.h"
+    #include "cd.h"
+    #include "ls.h"
+    #include "mkdir.h"
+    #include "ya_pwd.h"
+    #include "rm.h"
+    #include "wc.h"
+    #include "echo.h"
 
     // 从字符串映射到内建任务入口点所需要的组件
 

@@ -713,9 +713,10 @@ char *yytext;
 #include "shell.tab.h"   
 #include <stdlib.h>
 #include <string.h>
-#line 716 "lex.shell.c"
+#include <unistd.h>
+#line 717 "lex.shell.c"
 
-#line 718 "lex.shell.c"
+#line 719 "lex.shell.c"
 
 #define INITIAL 0
 #define IN_STRING 1
@@ -933,10 +934,10 @@ YY_DECL
 		}
 
 	{
-#line 11 "shell.l"
+#line 12 "shell.l"
 
 
-#line 939 "lex.shell.c"
+#line 940 "lex.shell.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -995,74 +996,74 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 13 "shell.l"
+#line 14 "shell.l"
 {BEGIN IN_STRING;}
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 14 "shell.l"
+#line 15 "shell.l"
 {shell_lval.arg = strdup(yytext); return ARG;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 15 "shell.l"
+#line 16 "shell.l"
 {BEGIN INITIAL;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 17 "shell.l"
+#line 18 "shell.l"
 {return SEMICOLON;}
 	YY_BREAK
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 18 "shell.l"
+#line 19 "shell.l"
 {return EOL;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 19 "shell.l"
+#line 20 "shell.l"
 {return RD_IN;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 20 "shell.l"
+#line 21 "shell.l"
 {return RD_OUT;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 21 "shell.l"
+#line 22 "shell.l"
 {return RD_TR;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 22 "shell.l"
+#line 23 "shell.l"
 {return TPIPE;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 23 "shell.l"
+#line 24 "shell.l"
 {return AND_SYM;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 25 "shell.l"
+#line 26 "shell.l"
 {
     shell_lval.arg = strdup(yytext); return ARG;
 }
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(IN_STRING):
-#line 29 "shell.l"
+#line 30 "shell.l"
 {exit(0);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 31 "shell.l"
+#line 32 "shell.l"
 ECHO;
 	YY_BREAK
-#line 1065 "lex.shell.c"
+#line 1066 "lex.shell.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -2065,5 +2066,5 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 31 "shell.l"
+#line 32 "shell.l"
 

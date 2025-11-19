@@ -4,20 +4,20 @@ Task_OBJ := building_task.o \
 	ExecutableTask.o \
 	task.o \
 
-builtin_cmd_OBJ := builtin/cat.o \
-        builtin/cd.o \
-        builtin/ls.o \
-        builtin/mkdir.o \
-        builtin/pwd.o \
-        builtin/rm.o \
-        builtin/wc.o \
-		builtin/echo.o
+builtin_cmd_OBJ := cat.o \
+        cd.o \
+        ls.o \
+        mkdir.o \
+        ya_pwd.o \
+        rm.o \
+        wc.o \
+		echo.o
 
 parser_OBJ := shell.tab.o \
 	lex.shell.o
 
-CFLAGS := -g -static-libgcc
-CXXFLAGS := -std=c++11 -g -static-libstdc++
+CFLAGS := -g
+CXXFLAGS := -std=c++11 -g
 
 all: shell
 
