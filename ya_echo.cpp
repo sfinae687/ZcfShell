@@ -1,8 +1,6 @@
-#include "echo.h"
-
 #include <stdio.h>
 
-int echo_main(int argc, const char *argv[])
+extern "C" int echo_main(int argc, const char *argv[])
 {
     if (argc == 1) {
         int ch;

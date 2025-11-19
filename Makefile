@@ -4,14 +4,14 @@ Task_OBJ := building_task.o \
 	ExecutableTask.o \
 	task.o \
 
-builtin_cmd_OBJ := cat.o \
-        cd.o \
-        ls.o \
-        mkdir.o \
+builtin_cmd_OBJ := ya_cat.o \
+        ya_cd.o \
+        ya_ls.o \
+        ya_mkdir.o \
         ya_pwd.o \
-        rm.o \
-        wc.o \
-		echo.o
+        ya_rm.o \
+        ya_wc.o \
+		ya_echo.o
 
 parser_OBJ := shell.tab.o \
 	lex.shell.o
@@ -34,10 +34,10 @@ $(Task_OBJ) : %.o : %.cpp
 $(parser_OBJ) : %.o : %.c
 	$(CC) $(CFLAGS) -c -o $@ $^
 
-shell.tab.c : shell.y
+shell.tab.c : shell.y config.h
 	bison -H shell.y
 
-lex.shell.c : shell.l
+lex.shell.c : shell.l config.h
 	flex shell.l
 
 $(builtin_cmd_OBJ) : %.o : %.cpp

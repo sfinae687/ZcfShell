@@ -1,5 +1,3 @@
-#include "cat.h"
-
 #include <stdio.h>
 
 void do_cat(FILE *file);

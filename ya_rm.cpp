@@ -1,5 +1,3 @@
-#include "rm.h"
-
 #include <stdio.h>
 #include <unistd.h>
 

@@ -1,5 +1,3 @@
-#include "wc.h"
-
 #include <stdio.h>
 #include <unistd.h>
 #include <ctype.h>
